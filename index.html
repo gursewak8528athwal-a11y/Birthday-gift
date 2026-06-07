@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Pammo ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    overflow:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:420px;
+    max-height:85vh;
+    overflow-y:auto;
+    text-align:center;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    padding:25px;
+    border-radius:25px;
+    color:white;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+h1{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.message{
+    font-size:1rem;
+    line-height:1.8;
+    text-align:center;
+}
+
+.heart{
+    font-size:2rem;
+    margin-top:15px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1);}
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4f81;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+
+<h1>🎂 Happy Birthday parampreet 🎀✨ 🎉</h1>
+
+<p class="message">
+TO MY SOHNEOO 💗<br><br>
+
+HAPPPPYYY BIRTHDDDAAAYYY PAMMOO. 🎂✨<br><br>
+
+You came into my life and made everything happier and more meaningful.
+Thank you for being you, for your kindness, your love, your patience, and all the little things you do that make me fall for you more. 💖<br><br>
+
+Jannuuu tade tu din shuru hoke tade te khmm hunda, I'm addicted to youu ✨🎀😩<br><br>
+
+MOTTII maee bhuttt khushh a teree nll and mae tryy karooga ki tannu hmsha khush rakha hnn. Ladhai taa hundyiea rehndyiea bhut, I'll never leave you, neverrr eveerr. 🥺❤️<br><br>
+
+I want too hugg you really tightly and want to celebrate this occasion but unfortunately I can't. Buttttt one day I willl — only youu and mee ✨🎀<br><br>
+
+but blaa naaa maaaii🍼 nii pushyiea naa aj minuu 🥺 katii ohvi vadi waliii ✨😚🤙🏻<br><br>
+
+Happppyyy Birthdddayyy, jaannnnnuu. 👑✨🎀<br><br>
+
+I LOVEEEEE YOUUU SOO MUCHH AND I'LL DO IT TILL MY LAST BREATH ✨🫶🏻❤️<br><br>
+
+<b>From Voopli chann🐮</b>
+</p>
+
+<div class="heart">❤️</div>
+
+<button onclick="celebrate()">Celebrate 🎊</button>
+
+</div>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+
+let confetti = [];
+
+function createConfetti(){
+    confetti = [];
+    for(let i=0;i<200;i++){
+        confetti.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height - canvas.height,
+            size: Math.random()*8 + 3,
+            speed: Math.random()*3 + 2,
+            color: `hsl(${Math.random()*360},100%,50%)`
+        });
+    }
+}
+
+function drawConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    confetti.forEach(c=>{
+        ctx.fillStyle = c.color;
+        ctx.fillRect(c.x,c.y,c.size,c.size);
+
+        c.y += c.speed;
+
+        if(c.y > canvas.height){
+            c.y = -20;
+            c.x = Math.random()*canvas.width;
+        }
+    });
+
+    requestAnimationFrame(drawConfetti);
+}
+
+function celebrate(){
+    createConfetti();
+}
+
+createConfetti();
+drawConfetti();
+
+window.addEventListener("resize", resizeCanvas);
+</script>
+
+</body>
+</html>
